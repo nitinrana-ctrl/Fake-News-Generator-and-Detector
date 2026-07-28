@@ -97,19 +97,44 @@ with right:
 
         else:
 
-            with st.spinner("Generating..."):
+           with st.spinner("Generating..."):
 
-                if generation_type == "Headline":
-                    content = generate_fake_headline(topic, tone)
-                else:
-                    content = generate_fake_article(topic, tone)
+            if generation_type == "Headline":
+                content = generate_fake_headline(topic, tone)
+            else:
+                content = generate_fake_article(topic, tone)
 
-            st.success("✅ Content Generated")
+        # Check if generation failed
+        if content.startswith("⚠️"):
+
+            st.error(content)
+
+        else:
+
+            st.success("✅ Content Generated Successfully")
 
             st.markdown("### 📰 Generated Content")
 
-            st.info(content)
+            st.markdown(
+                f"""
+        <div style="
+        padding:20px;
+        border-radius:10px;
+        background-color:#ffffff;
+        border-left:6px solid #ff9800;
+        font-size:20px;
+        font-weight:500;
+        color:#000000;
+        line-height:1.7;
+        white-space:pre-wrap;">
+
+        {content}
+
+        </div>
+        """,
+                unsafe_allow_html=True,
+            )
 
             st.warning(
-                "⚠️ This content is AI-generated for educational purposes only."
+                "⚠️ This content is AI-generated and intended only for educational purposes."
             )
