@@ -10,42 +10,25 @@ st.set_page_config(
     layout="wide"
 )
 
-# -------------------- TITLE --------------------
+# -------------------- HEADER --------------------
 
-st.title("📰 Fake News Generator & Detector using Generative AI and NLP")
+st.caption("📚 PBEL Internship Project")
+
+st.title("📰 Fake News Generator & Detector")
 
 st.markdown("""
-### 📌 Project Description
-
-This project consists of two modules:
-
-### 🛡 Fake News Detector
-- Uses Natural Language Processing (NLP)
-- Uses Machine Learning (Multinomial Naive Bayes)
-- Detects whether a news article is **Real** or **Fake**
-
-### ✨ Fake News Generator
-- Uses Google's Gemini Generative AI
-- Generates fictional fake news headlines
-- Created for educational purposes only
-
----
-
-### 🛠 Technologies Used
-
-- Python
-- Scikit-learn
-- Natural Language Processing (NLP)
-- TF-IDF Vectorizer
-- Multinomial Naive Bayes
-- Google Gemini AI
-- Streamlit
+#### Detect **Fake or Real News** using Machine Learning or generate
+AI-powered fake news using **Google Gemini AI**.
 """)
+
+st.caption("Python • NLP • TF-IDF • Multinomial Naive Bayes • Google Gemini AI")
+
+st.divider()
 
 # -------------------- TABS --------------------
 
 tab1, tab2 = st.tabs(
-    ["🛡 Fake News Detector", "✨ Fake News Generator"]
+    ["🔍 Detector", "✨ Generator"]
 )
 
 # ======================================================
@@ -62,7 +45,7 @@ with tab1:
         placeholder="Paste a complete news article here..."
     )
 
-    if st.button("🔍 Analyze News", use_container_width=True):
+    if st.button("🔍 Analyze", use_container_width=True):
 
         if news.strip() == "":
             st.warning("Please enter a news article.")
@@ -79,7 +62,7 @@ with tab1:
                 st.error(prediction)
 
             st.metric(
-                "Confidence Score",
+                "🎯 Prediction Confidence",
                 f"{confidence:.2f}%"
             )
 
@@ -113,7 +96,7 @@ Dataset : ISOT Fake & Real News Dataset
 
 with tab2:
 
-    st.header("✨ Fake News Generator")
+    
 
     topic = st.text_input(
         "Enter Topic",
@@ -136,7 +119,7 @@ with tab2:
         ]
     )
 
-    if st.button("✨ Generate Headline", use_container_width=True):
+    if st.button("✨ Generate", use_container_width=True):
 
         if topic.strip() == "":
             st.warning("Please enter a topic.")
@@ -150,9 +133,9 @@ with tab2:
                 else:
                     headline = generate_fake_article(topic, tone)
 
-            st.success("✅ AI Generated Fake News Headline")
+            st.success("✅ Content Generated Successfully")
 
-            st.markdown("### 📰 Generated Headline")
+            st.markdown("### 📰 Generated Content")
 
             st.markdown(
                 f"""
@@ -186,8 +169,10 @@ Do not consider it factual news.
 
 # -------------------- FOOTER --------------------
 
-st.divider()
-
-st.caption(
-    "PBEL Internship Project | Fake News Generator & Detector using Generative AI and NLP"
-)
+st.markdown("""
+<style>
+.dev-badge{position:fixed;bottom:18px;right:18px;background:#262730;color:white;padding:10px 16px;border-radius:12px;font-size:13px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.3);z-index:999;}
+.dev-badge span{color:#d0d0d0;font-size:12px;}
+</style>
+<div class="dev-badge"><span>Developed by</span><br><b>Nitin Rana</b></div>
+""", unsafe_allow_html=True)
