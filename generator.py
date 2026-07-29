@@ -30,7 +30,7 @@ Rules:
 
     try:
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-3.5-flash",
             contents=prompt,
         )
 
@@ -61,7 +61,7 @@ Rules:
 
     try:
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-3.5-flash",
             contents=prompt,
         )
 
@@ -76,3 +76,5 @@ Rules:
             "⚠️ Gemini AI is currently unavailable due to high demand.\n\n"
             "Please try again after a few moments."
         )
+        
+        
